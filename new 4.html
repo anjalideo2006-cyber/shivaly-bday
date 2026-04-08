@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 21st Bday Smartyyyy Jiiii 🎂💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #ffd6e7, #ffe9c7, #e8d8ff, #d9f8ff);
+      color: #5a2d47;
+      position: relative;
+    }
+
+    .floating-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .float-item {
+      position: absolute;
+      bottom: -60px;
+      font-size: 24px;
+      opacity: 0.8;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 10px;
+      z-index: 5;
+    }
+
+    .topbar button {
+      border: none;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      color: #7d2e59;
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 6px 18px rgba(125,46,89,0.15);
+      transition: 0.3s;
+    }
+
+    .topbar button:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: #fff;
+    }
+
+    .page {
+      display: none;
+      min-height: 78vh;
+      padding: 30px 18px 40px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255,255,255,0.45);
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(125,46,89,0.15);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #c43375;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 0 rgba(255,255,255,0.6);
+    }
+
+    .hero h2 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      margin-bottom: 18px;
+      color: #7b3f61;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      line-height: 1.9;
+      max-width: 900px;
+      margin: 12px auto;
+    }
+
+    .big-btn, .small-btn {
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .big-btn {
+      background: linear-gradient(45deg, #ff5ea8, #ff8f70);
+      color: white;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 1rem;
+      box-shadow: 0 10px 20px rgba(255,94,168,0.25);
+    }
+
+    .small-btn {
+      background: #fff;
+      color: #7b3f61;
+      padding: 11px 18px;
+      border-radius: 14px;
+      margin-right: 8px;
+      margin-top: 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .big-btn:hover, .small-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 25px;
+      color: #ba2f72;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.72);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(90,45,71,0.1);
+      line-height: 1.8;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #c43375;
+      font-size: 1.3rem;
+    }
+
+    .message-box {
+      background: rgba(255,255,255,0.75);
+      border-radius: 28px;
+      padding: 28px;
+      line-height: 2;
+      box-shadow: 0 12px 30px rgba(90,45,71,0.12);
+      font-size: 1.05rem;
+    }
+
+    .message-box strong {
+      color: #c43375;
+    }
+
+    .choice-area {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .choice-result {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.7);
+      padding: 20px;
+      border-radius: 20px;
+      min-height: 80px;
+      line-height: 1.8;
+      box-shadow: 0 8px 20px rgba(90,45,71,0.1);
+    }
+
+    .game-box {
+      background: rgba(255,255,255,0.75);
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(90,45,71,0.12);
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .gift {
+      background: linear-gradient(135deg, #ff9cc6, #ffd58a);
+      color: white;
+      border-radius: 22px;
+      padding: 30px 12px;
+      font-size: 2.1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255,156,198,0.3);
+      transition: 0.25s;
+      user-select: none;
+    }
+
+    .gift:hover {
+      transform: scale(1.06) rotate(-2deg);
+    }
+
+    .gift-message {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.8);
+      min-height: 70px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .final-box {
+      text-align: center;
+      background: rgba(255,255,255,0.8);
+      border-radius: 30px;
+      padding: 35px 25px;
+      box-shadow: 0 14px 34px rgba(90,45,71,0.13);
+    }
+
+    .final-box h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #d12d76;
+      margin-bottom: 18px;
+    }
+
+    .final-box p {
+      line-height: 2;
+      font-size: 1.08rem;
+      max-width: 900px;
+      margin: 14px auto;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 25px 10px 35px;
+      color: #7b4d66;
+      font-weight: bold;
+    }
+
+    .nav-buttons {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .counter {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #8f2d62;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .sparkle {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff, #ffd3e7);
+      pointer-events: none;
+      animation: sparkleAnim 1s ease forwards;
+      z-index: 9999;
+    }
+
+    @keyframes sparkleAnim {
+      0% { transform: scale(0.2); opacity: 1; }
+      100% { transform: scale(2.5) translateY(-25px); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .hero, .message-box, .game-box, .final-box, .card {
+        padding: 20px;
+      }
+      .topbar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-layer" id="floatingLayer"></div>
+
+  <div class="container">
+    <div class="topbar">
+      <button onclick="showPage(0)">Home 🎂</button>
+      <button onclick="showPage(1)">Why You’re Special 💖</button>
+      <button onclick="showPage(2)">Our Story 🥹</button>
+      <button onclick="showPage(3)">Choice Surprise 😌</button>
+      <button onclick="showPage(4)">Funny Gift Game 🎁</button>
+      <button onclick="showPage(5)">Final Wish 👑</button>
+    </div>
+
+    <div class="counter" id="pageCounter">Page 1 of 6 💌</div>
+
+    <!-- PAGE 1 -->
+    <section class="page active">
+      <div class="hero">
+        <h1>HAPPY BDAY SMARTYYYYYYYYY 🎂💖🎈✨</h1>
+        <h2>Mahnnn 21 yrs??? Wowwwww… humon k senior citizen reh 😭😂👵🎉</h2>
+        <p>
+          To the one and only <strong>Smarty Jiiii</strong>... today is not just any day. Today is the day the universe truly did something right,
+          because it gave this world <strong>you</strong> — the sweetest, funniest, most caring, most supportive, most beautiful soul and also the
+          one person who somehow manages to handle every bit of my chaos without running away 😭💖.
+        </p>
+        <p>
+          Happy 21st birthday to the most special human everrrrrr. I genuinely don’t have enough words to explain just how much you mean to me.
+          Like sach me, some people come into life and just stay as “someone we know,” but you... you became something so much more.
+          You became comfort. You became peace. You became laughter. You became one of the best parts of my USP life. 🥹🎓💗
+        </p>
+        <p>
+          I never thought that we would meet at USP and become such good friends like this. Life just casually made us meet,
+          and then somehow that one meeting turned into conversations, comfort, support, and such a beautiful friendship that I honestly feel blessed for.
+          Out of all the people, I got <strong>you</strong> as my friend — and that itself feels like one of the best gifts life gave me. 🎁💫
+        </p>
+        <p>
+          You help me whenever I am stuck, lost, confused, overthinking, panicking, or just creating full on unnecessary chaos like it’s my full-time job 🤦‍♀️😂.
+          And still... you stay patient, you guide me, you help me out, and you make things feel less heavy. That is such a rare thing.
+          Your presence has this calming magic. Even on messy days, you somehow make things better. That is why today has to be special.
+          Because <strong>you</strong> are extra extra special. 💝🌸
+        </p>
+        <button class="big-btn" onclick="showPage(1)">Start Your Birthday Surprise, Smarty 💖➡️</button>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page">
+      <h2 class="section-title">Why You’re So So So Special 💖🥹✨</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. You Handle My Chaos 😂🌪️</h3>
+          <p>
+            Smarty, genuinely, I don’t know how you do it. Whenever I’m confused, stressed, stuck, lost, or just mentally buffering,
+            you somehow handle me with so much patience. Like excuse me madam, are you secretly a professional chaos manager?
+            Because the way you handle all my random panic and still stay sweet is honestly iconic. 😭👑
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>2. You’re Such a Caring Soul 🌷</h3>
+          <p>
+            You care in ways that feel soft, real, and genuine. You show up, you listen, you help, and you make people feel important.
+            And trust me, not everyone has that gift. Your kindness is one of the first things anyone would notice, and it’s one of the biggest reasons
+            you are so precious to me. 💕
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>3. USP Gave Me a Bestie 🎓💞</h3>
+          <p>
+            We met at USP, and who knew that out of all the classes, confusion, campus moments, and life chaos,
+            I would meet someone who would become this special to me? It honestly feels like such a lucky thing.
+            USP gave assignments, stress, confusion... but most importantly, it gave me <strong>you</strong>. 😌✨
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>4. You Make Life Lighter ☀️🤣</h3>
+          <p>
+            Some people are just nice to be around... and then there’s you — a whole comfort zone in human form.
+            You make stressful moments easier, awkward moments funnier, and bad moments softer. Your vibe is just so warm and lovable.
+            Basically, you are a limited edition premium friendship package. 💅🎁
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>5. Senior Citizen at 21 👵🎂</h3>
+          <p>
+            I still cannot believe it. 21 years old??? Wahhhh smartyyyy, full senior citizen vibes now reh 😂💖.
+            From now on I must respect my elders. Please share your wisdom, ancient queen. Next thing you’ll be telling us
+            “back in my days…” while turning 21 with full style and sparkle 😭✨👑
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>6. You’re Genuinely One of a Kind 🌟</h3>
+          <p>
+            There is just something about you that feels so rare. The way you care, the way you help,
+            the way you stay kind, and the way you make friendship feel so natural and safe — that’s not common.
+            You are one of those people who leave a beautiful impact without even trying. And I hope you always know that. 💖
+          </p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="small-btn" onclick="showPage(0)">⬅️ Back</button>
+        <button class="small-btn" onclick="showPage(2)">Next ➡️</button>
+      </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page">
+      <h2 class="section-title">Our Story, My Favorite Coincidence 🥹🌸</h2>
+      <div class="message-box">
+        <p>
+          <strong>Smarty Jiiii,</strong>
+          I really want you to know this from my heart — I never thought we would meet and become friends like this.
+          Sometimes life brings people in such random ways, and at first it seems like just another normal meeting.
+          But then slowly, without even realizing it, that person becomes someone important. Someone you trust. Someone you look for.
+          Someone whose presence makes life feel better. And that is exactly what happened with you. 💖
+        </p>
+
+        <p>
+          We met at <strong>USP</strong>, and honestly who would have thought that among studies, confusion, deadlines, getting stuck,
+          getting lost, stress, and all the usual university madness... I would find such a beautiful friend in you.
+          You became one of the nicest parts of that whole journey. You are not just “a friend from campus.”
+          You are someone who actually made that whole experience feel more memorable, more fun, more comforting, and more meaningful. 🎓✨
+        </p>
+
+        <p>
+          You have helped me in so many moments — especially when I was stuck, lost, confused, or creating maximum unnecessary drama in simple situations 😭😂.
+          And still, instead of getting tired of me, you stayed there. You helped me. You guided me. You handled my chaos.
+          And I don’t think I say it enough, but that means so much to me.
+        </p>
+
+        <p>
+          People don’t always realize how much small acts of care matter. But your support, your patience, your friendship —
+          all of it matters a lot. It has made me feel seen, helped, comforted, and lucky. Very lucky.
+          Because not everyone gets a friend like you. And I truly feel blessed that I did. 🌷💗
+        </p>
+
+        <p>
+          So on your 21st birthday, I just want to say thank you. Thank you for being so lovely.
+          Thank you for being someone I can count on. Thank you for being the kind of friend who makes everything a little brighter.
+          Thank you for being my Smarty, my helper, my problem-solver, my laughter supplier, and my chaos manager. 😌💖✨
+        </p>
+
+        <p>
+          No matter how much I write, it still won’t feel enough. Because some people are too special for normal words.
+          And you, my dear smartyyyyyyyy, are definitely one of them. 💌
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="small-btn" onclick="showPage(1)">⬅️ Back</button>
+        <button class="small-btn" onclick="showPage(3)">Next ➡️</button>
+      </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="page">
+      <h2 class="section-title">Choose Your Birthday Mood, Smarty 😌🎉</h2>
+      <div class="choice-area">
+        <p style="margin-bottom:16px; font-size:1.05rem; line-height:1.8;">
+          Since madam is now <strong>21 years old</strong> and obviously too important and too senior for normal wishes,
+          please choose your official birthday mode below 😂💖👇
+        </p>
+
+        <button class="small-btn" onclick="showChoice('sweet')">I want the sweetest message 🥹💖</button>
+        <button class="small-btn" onclick="showChoice('funny')">I want funny senior citizen content 😂👵</button>
+        <button class="small-btn" onclick="showChoice('emotional')">I want emotional bestie feels 😭🌸</button>
+        <button class="small-btn" onclick="showChoice('royal')">I want queen treatment 👑✨</button>
+
+        <div class="choice-result" id="choiceResult">
+          Click any option above, Smarty Jiiii 💌
+        </div>
+      </div>
+
+      <div class="message-box" style="margin-top:25px;">
+        <p>
+          Whatever version you choose, one thing remains the same:
+          <strong>you are deeply loved, truly appreciated, and incredibly special.</strong>
+          Birthdays are about cakes and gifts and fun, yes — but they are also about reminding someone how much they mean.
+          And you mean a lot. More than regular words can explain. 💖
+        </p>
+
+        <p>
+          I hope this year gives you happiness that stays, peace that feels real, laughter that comes easily,
+          success that keeps growing, and memories that make your heart full. I hope your smile gets wider,
+          your stress gets smaller, and your days become softer and brighter. You deserve all the good things,
+          all the blessings, all the joy, and all the love. 🌈🌷✨
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="small-btn" onclick="showPage(2)">⬅️ Back</button>
+        <button class="small-btn" onclick="showPage(4)">Next ➡️</button>
+      </div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section class="page">
+      <h2 class="section-title">Funny Birthday Gift Game 🎁🤣</h2>
+      <div class="game-box">
+        <p style="line-height:1.9;">
+          Smartyyyyy, one of these gift boxes has your <strong>official 21st birthday reward</strong>.
+          Others contain very serious and very important nonsense 😂💖.
+          Click them all because madam deserves unlimited surprises 🎉
+        </p>
+
+        <div class="gift-grid">
+          <div class="gift" onclick="openGift(0)">🎁</div>
+          <div class="gift" onclick="openGift(1)">🎁</div>
+          <div class="gift" onclick="openGift(2)">🎁</div>
+          <div class="gift" onclick="openGift(3)">🎁</div>
+          <div class="gift" onclick="openGift(4)">🎁</div>
+          <div class="gift" onclick="openGift(5)">🎁</div>
+        </div>
+
+        <div class="gift-message" id="giftMessage">
+          Open a gift box, senior citizen ji 😂👵🎂
+        </div>
+      </div>
+
+      <div class="message-box" style="margin-top:25px;">
+        <p>
+          Truthfully, no actual gift can match your worth. Because how do you wrap someone’s kindness?
+          How do you box someone’s warmth, support, and beautiful friendship? You can’t.
+          But if I could, I would give you a giant package full of happiness, peace, snacks, success,
+          zero stress, perfect skin, endless money, no deadlines, no assignment tension, and a permanent “life sorted” button 😭💸✨
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="small-btn" onclick="showPage(3)">⬅️ Back</button>
+        <button class="small-btn" onclick="showPage(5)">Next ➡️</button>
+      </div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="page">
+      <div class="final-box">
+        <h1>HAPPY 21ST BDAY SMARTY JIIIIII 👑🎂💖✨</h1>
+
+        <p>
+          My dearest <strong>Smarty</strong>, happy happy happiest birthday to youuuu.
+          I hope today reminds you of how loved you are, how valued you are, how appreciated you are,
+          and how much light you bring into people’s lives just by being yourself.
+        </p>
+
+        <p>
+          You are genuinely one of the sweetest people I know. You have helped me when I was stuck,
+          lost, confused, stressed, and surrounded by full chaos. And even through all of that,
+          you stayed kind. You stayed patient. You stayed lovely. That means more than I can explain.
+        </p>
+
+        <p>
+          I still can’t believe we met at USP and became friends like this. Out of all the random moments in life,
+          I am so grateful that one of them led me to <strong>you</strong>. Some friendships are just special from the heart,
+          and ours is definitely one of those. You are not just my friend — you are my comfort, my helper,
+          my laugh supplier, and honestly my emergency support system when my brain stops working 😭💖
+        </p>
+
+        <p>
+          On your 21st birthday, I wish you everything beautiful:
+          happiness that stays,
+          love that feels safe,
+          friendships that stay true,
+          success that keeps growing,
+          peace in your heart,
+          laughter every day,
+          and blessings in every step of your life. 🌷🌈✨
+        </p>
+
+        <p>
+          Keep smiling, keep shining, keep being your amazing self.
+          And please never forget that you are truly, deeply, extra extra special.
+          Today is your day, queen. Enjoy it with full style, full happiness, full sparkle, and full senior citizen energy 😭👵👑🎉
+        </p>
+
+        <p style="font-size:1.25rem; font-weight:bold; color:#c43375;">
+          HAPPY BDAY SMARTYYYYYYYYY 💖🎂🎈✨<br>
+          21 YEARS OLD MAHNNN WOWWWWWW 😭😂💃<br>
+          SENIOR CITIZEN REH 👵💅<br>
+          LOVE YOU LOADSSSS SMARTY JIIII 🌸💌
+        </p>
+
+        <button class="big-btn" onclick="blastSurprise()">One Last Big Birthday Surprise 🎉</button>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="small-btn" onclick="showPage(4)">⬅️ Back</button>
+        <button class="small-btn" onclick="showPage(0)">Go to Start 🎂</button>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Made with love, drama, sparkle, and maximum bestie energy 💖✨😂
+    </div>
+  </div>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const pageCounter = document.getElementById('pageCounter');
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.toggle('active', i === index);
+      });
+      pageCounter.innerHTML = `Page ${index + 1} of ${pages.length} 💌`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      sparkleBurst(window.innerWidth / 2, 120, 20);
+    }
+
+    function showChoice(type) {
+      const result = document.getElementById('choiceResult');
+
+      if (type === 'sweet') {
+        result.innerHTML = `
+          🥹💖 <strong>Sweet message for Smarty:</strong><br><br>
+          You are such a beautiful soul, and I hope you always remember that. 
+          You deserve love that feels genuine, happiness that feels peaceful, and memories that stay warm forever. 
+          You make life softer just by being in it, and that is one of the prettiest things about you.
+        `;
+      }
+
+      if (type === 'funny') {
+        result.innerHTML = `
+          😂👵 <strong>Official senior citizen notice:</strong><br><br>
+          Congratulations Smarty Jiiii, you are now 21. 
+          Please stretch before standing, drink water responsibly, and begin saying things like 
+          “these kids nowadays…” while cutting cake in royal style. 
+          Elder status unlocked successfully. 🎂👑
+        `;
+      }
+
+      if (type === 'emotional') {
+        result.innerHTML = `
+          😭🌸 <strong>Emotional bestie mode:</strong><br><br>
+          I’m honestly so grateful for you. 
+          You came into my life so naturally, yet became so important so quickly. 
+          Thank you for being there, for helping me, and for making friendship feel safe and beautiful. 
+          You are truly one of my biggest blessings.
+        `;
+      }
+
+      if (type === 'royal') {
+        result.innerHTML = `
+          👑✨ <strong>Queen treatment activated:</strong><br><br>
+          Today is not an ordinary day. 
+          Today the kingdom celebrates the birthday of Her Royal Smartyness, slayer of chaos, protector of besties, 
+          and owner of the sweetest heart. 
+          May her cake be tall, her outfit perfect, and her birthday energy unmatched. 🎉💖
+        `;
+      }
+
+      sparkleBurst(window.innerWidth / 2, window.innerHeight / 2, 28);
+    }
+
+    const giftTexts = [
+      "🎂 Cake Coupon: One extra huge slice for the birthday queen because calories don’t count today 😂💖",
+      "👵 Senior Citizen Pass: Valid from age 21 onward. Includes free wisdom and dramatic back pain jokes 😭",
+      "💸 Unlimited Money Voucher: Sadly fake, but emotionally very supportive ✨",
+      "🎓 USP Survivor Award: For being smart, iconic, and still surviving campus life with grace 💅",
+      "🌸 Bestie Gold Medal: For always helping me whenever I’m stuck, lost, or mentally gone 😭💖",
+      "👑 Final Prize: You officially win the title of SMARTYYYY JIIII, queen of kindness, chaos handling, and birthday sparkle ✨"
+    ];
+
+    function openGift(index) {
+      document.getElementById('giftMessage').innerHTML = giftTexts[index];
+      sparkleBurst(window.innerWidth / 2, window.innerHeight / 2, 30);
+    }
+
+    function createFloatingItems() {
+      const layer = document.getElementById('floatingLayer');
+      const emojis = ["💖", "🎈", "✨", "💗", "💕", "🎂", "🥹", "🌸", "💝"];
+
+      setInterval(() => {
+        const item = document.createElement('div');
+        item.className = 'float-item';
+        item.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        item.style.left = Math.random() * 100 + 'vw';
+        item.style.animationDuration = (6 + Math.random() * 6) + 's';
+        item.style.fontSize = (18 + Math.random() * 20) + 'px';
+        layer.appendChild(item);
+
+        setTimeout(() => {
+          item.remove();
+        }, 12000);
+      }, 350);
+    }
+
+    function sparkleBurst(x, y, count = 16) {
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('div');
+        s.className = 'sparkle';
+        s.style.left = (x + (Math.random() * 100 - 50)) + 'px';
+        s.style.top = (y + (Math.random() * 60 - 30)) + 'px';
+        document.body.appendChild(s);
+
+        setTimeout(() => s.remove(), 1000);
+      }
+    }
+
+    function blastSurprise() {
+      alert("HAPPY 21ST BDAY SMARTYYYYYYYYY 🎂💖👑✨\n\nMahn 21 yrs wowwwww... senior citizen reh 😂👵\n\nYou are so so so special and so loved! 🌸");
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          sparkleBurst(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 25);
+        }, i * 200);
+      }
+    }
+
+    document.addEventListener('click', function(e) {
+      sparkleBurst(e.clientX, e.clientY, 8);
+    });
+
+    createFloatingItems();
+  </script>
+</body>
+</html>
